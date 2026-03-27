@@ -1,0 +1,25 @@
+{
+  "name": "lunas-gate",
+  "version": "1.0.0",
+  "description": "Exclusive cosmic utility bot for THE INNER CIRCLE and Vortec Cloud.",
+  "main": "index.js",
+  "author": "Elon/ @ea556 aka The Inner circle",
+  "type": "module",
+  "dependencies": {
+    "discord.js": "^14.14.1",
+    "dotenv": "^16.4.5",
+    "chalk": "^5.3.0"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "cosmic",
+    "community-management",
+    "minimalist"
+  ],
+  "license": "ISC"
+}
