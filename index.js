@@ -11,7 +11,7 @@ const {
 
 // ===== CONFIG =====
 const TOKEN = process.env.TOKEN;
-const WELCOME_CHANNEL_ID = "1486123113996484731";
+const WELCOME_CHANNEL_ID = "1478830510435209396";
 
 // 👉 IMAGE LINK
 const WELCOME_IMAGE ="https://media.discordapp.net/attachments/1457718615162748959/1487144141887373495/Untitled439_20260327183407.png?ex=69c8bb29&is=69c769a9&hm=87f8e931473ecb40f368874aa349cd64a3ba1e436380914cb720576d83349518&=&format=webp&quality=lossless&width=1860&height=626";
