@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "start": "node index.js"
+  },
   "dependencies": {
     "canvas": "^3.2.2",
     "discord.js": "^14.25.1",
