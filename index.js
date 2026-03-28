@@ -10,7 +10,7 @@ const {
 } = require("discord.js");
 
 // ===== CONFIG =====
-const TOKEN = process.env.DISCORD_TOKEN;
+const TOKEN = process.env.TOKEN;
 const WELCOME_CHANNEL_ID = "1486123113996484731";
 
 // 👉 IMAGE LINK
