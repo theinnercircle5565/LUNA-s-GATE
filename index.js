@@ -1,39 +1,31 @@
-import {
+require("dotenv").config();
+
+const {
   Client,
   GatewayIntentBits,
-  Partials,
   EmbedBuilder,
+  PermissionsBitField,
   REST,
   Routes,
-  PermissionsBitField,
-} from "discord.js";
-
-import path from "path";
-import { fileURLToPath } from "url";
+} = require("discord.js");
 
 // ===== CONFIG =====
-const TOKEN = "";
+const TOKEN = "process.env.TOKEN";
 const WELCOME_CHANNEL_ID = "1478830510435209396";
 
-// Path setup for image
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const welcomeImagePath = path.join(__dirname, "assets", "JAVIER_NOOOOOB.webp");
+// 👉 IMAGE LINK
+const WELCOME_IMAGE ="https://media.discordapp.net/attachments/1457718615162748959/1487144141887373495/Untitled439_20260327183407.png?ex=69c8bb29&is=69c769a9&hm=87f8e931473ecb40f368874aa349cd64a3ba1e436380914cb720576d83349518&=&format=webp&quality=lossless&width=1860&height=626";
 
 let autoRoleId = null;
 
 // ===== CLIENT =====
 const client = new Client({
-  intents: [
-    GatewayIntentBits.Guilds,
-    GatewayIntentBits.GuildMembers,
-  ],
-  partials: [Partials.Channel],
+  intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers],
 });
 
 // ===== READY =====
 client.once("ready", async () => {
-  console.log(`✅ Logged in as ${client.user.tag} 🌑`);
+  console.log(`✅ Logged in as ${client.user.tag}`);
 
   const commands = [
     { name: "testwelcome", description: "Test welcome (Admin only)" },
@@ -50,7 +42,7 @@ client.once("ready", async () => {
       options: [
         {
           name: "action",
-          description: "Set or remove",
+          description: "Choose action",
           type: 3,
           required: true,
           choices: [
@@ -60,7 +52,7 @@ client.once("ready", async () => {
         },
         {
           name: "role",
-          description: "Role to give",
+          description: "Select role",
           type: 8,
           required: false,
         },
@@ -73,10 +65,10 @@ client.once("ready", async () => {
     body: commands,
   });
 
-  console.log("✅ Slash commands ready");
+  console.log("✅ Slash commands registered");
 });
 
-// ===== SEND WELCOME =====
+// ===== WELCOME FUNCTION =====
 async function sendWelcome(member, channel) {
   // Auto role
   if (autoRoleId) {
@@ -90,12 +82,9 @@ async function sendWelcome(member, channel) {
       `Welcome ${member} 🌑\nYou are member #${member.guild.memberCount}`
     )
     .setColor(0x156177)
-    .setImage("attachment://welcome.png"); // Use attached image
+    .setImage(WELCOME_IMAGE);
 
-  await channel.send({
-    embeds: [embed],
-    files: [welcomeImagePath],
-  });
+  await channel.send({ embeds: [embed] });
 }
 
 // ===== MEMBER JOIN =====
@@ -195,7 +184,6 @@ client.on("interactionCreate", async (interaction) => {
       "☀️ Sun = 99.8% solar system mass",
       "🌑 Moon moving away from Earth",
       "🛰️ ISS orbits Earth every 90 minutes",
-      '🔭 We can "hear" stars via radio waves',
     ];
     return interaction.reply(
       facts[Math.floor(Math.random() * facts.length)]
